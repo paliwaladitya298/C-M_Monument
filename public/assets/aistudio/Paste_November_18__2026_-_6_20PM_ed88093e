@@ -1,0 +1,627 @@
+# C & M MONUMENT COMPANY — COMPLETE CINEMATIC FLOATING MONUMENT WEBSITE
+## Premium Interactive Memorial Experience | Exact Scroll Animation Recreation | React JSX
+
+Build a complete, premium, cinematic, highly interactive website for **C & M Monument Company**, a monument and memorial company dedicated to creating meaningful, high-quality monuments that beautifully celebrate the lives of loved ones. The website must recreate the immersive animation experience of the provided Mossline Floating Moss Island reference, but completely transform its visual identity, environment, content, imagery, and interactions into a sophisticated monument and memorial experience.
+
+The objective is not to create an ordinary business landing page with a few fade-in effects. Build a complete cinematic website with a pinned scroll story, video-based camera movement, canvas frame scrubbing, layered image composition, realistic floating monument visuals, interactive 3D transformations, atmospheric cemetery mist, scroll-controlled text reveals, interactive craftsmanship hotspots, and a premium monument collection. The final result should feel like an immersive digital experience that communicates remembrance, dignity, craftsmanship, trust, and quality.
+
+**MANDATORY TECHNOLOGY REQUIREMENTS:** Build the website using React, JavaScript, and JSX. Use `.jsx` files only. Do not use TypeScript, TSX, interfaces, type annotations, or TypeScript configuration. Use reusable React components, custom hooks, CSS, and JavaScript animation logic. The website must be fully functional, responsive, and animated, not just a visual mockup or static design.
+
+---
+
+# 1. REFERENCE WEBSITE AND CREATIVE DIRECTION
+
+Use the provided C & M Monument Company screenshot as the visual reference for company identity, subject matter, branding, monument imagery, and atmosphere. Use the Mossline Floating Moss Island reference as the technical and animation reference for the complete scroll experience.
+
+Preserve the Mossline reference's animation choreography, pinned scrolling, camera movement, video frame caching, canvas rendering, image layering, floating foreground elements, pointer parallax, atmospheric effects, word-by-word reveals, section transitions, and interaction timing. Replace every environmental subject with a monument-related equivalent.
+
+Do not reuse Mossline's floating island, moss, ferns, sensor mast, environmental branding, environmental content, or imagery as actual C & M website content. Its original asset URLs must only be included as technical reference material in Section 17.
+
+The C & M website should use a sophisticated visual identity based on warm ivory, natural stone, granite grey, charcoal, muted gold, and subtle greenery. Use elegant serif typography for large headings, clean sans-serif typography for supporting content, and small uppercase monospace labels for visual details. Monument photography should look realistic, with authentic granite textures, polished edges, detailed engraving, natural shadows, realistic proportions, and carefully composed cemetery environments.
+
+The overall experience should be peaceful, refined, emotionally meaningful, and premium. Avoid excessive gold, neon colors, flashy gradients, artificial glowing effects, excessive particles, cartoonish 3D objects, fantasy-like floating rocks, and distracting animation.
+
+Use the following CSS design tokens as the starting point and adjust them where necessary to match the provided C & M branding:
+
+```css
+:root {
+  --ink: #292c29;
+  --ink2: #565d55;
+  --mist: #e8e9e5;
+  --paper: #f7f6f2;
+  --stone: #c8c4ba;
+  --gold: #b69a67;
+  --gold2: #d2bc91;
+  --glass: rgba(247, 246, 242, .18);
+  --line: rgba(255, 255, 255, .30);
+
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+```
+
+# 2. COMPANY CONTENT AND BRAND MESSAGE
+
+Use the following company message as the source of truth:
+
+"C & M Monument Company was born from the belief that we could help loved ones in time of loss by providing quality markers of remembrance at an affordable cost. Our goal is to offer monuments that beautifully celebrate the life of the one who has passed on. We care about the little things that remind us of our loved ones and the life they lived."
+
+The main website headline should be **"A Lasting Tribute. A Timeless Memory."** The central brand message should communicate that every monument represents a life, a memory, and a meaningful way to honor someone who has passed away.
+
+Use supporting content such as "Every Life Deserves a Beautiful Tribute", "Creating Beautiful Memorials. Preserving Precious Memories.", and "Made with Care. Created to Last." naturally throughout the experience.
+
+Do not invent company history, years of experience, customer counts, installation counts, awards, prices, testimonials, business locations, customer satisfaction percentages, or other unverified statistics. If company-specific information is unavailable, use non-numeric service highlights rather than fabricated claims.
+
+# 3. PAGE BASICS, TYPOGRAPHY, AND GLOBAL STYLES
+
+Set the HTML language to English, include UTF-8 character encoding, a responsive viewport, and a meaningful page title: "C & M Monument Company — A Lasting Tribute".
+
+Load the selected Google Fonts with appropriate preconnects. Use Inter or Inter Tight for navigation and supporting text, Cormorant Garamond or Playfair Display for elegant headings, and JetBrains Mono for small uppercase labels. Ensure the fonts load correctly without blocking the entire website.
+
+Apply a global CSS reset:
+
+```css
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--mist);
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+```
+
+Create reusable `.mono`, `.chip`, `.layer`, and animation utility classes. The `.mono` utility should use uppercase text, approximately 11px font size, and `.14em` letter spacing. The `.chip` utility should use a restrained warm-gold or stone background, small uppercase monospace text, approximately 22px height, horizontal padding around 9px, and a subtle 3px radius.
+
+Use a consistent spacing system, smooth transitions, and carefully controlled typography. Avoid unnecessary visual decoration.
+
+# 4. FIXED NAVIGATION
+
+Create a fixed navigation bar with `z-index: 50`, a three-column grid using `1fr auto 1fr`, and approximately `22px 34px` padding.
+
+On the left, display the C & M Monument Company logo using the supplied logo if available. Otherwise, create a refined C & M monogram or simple monument-inspired geometric symbol. Use a 20–22px semibold wordmark, Inter Tight or equivalent typography, and a subtle 9px gap between the icon and company name.
+
+In the centre, create navigation links for Home, About Us, Our Monuments, Gallery, and Services. Use small uppercase monospace typography around 11.5px with `.14em` letter spacing and approximately 30px spacing on desktop. Add subtle hover color transitions toward muted gold. Navigation links must scroll to the appropriate website sections.
+
+On the right, include a **LET'S TALK** or **REQUEST A QUOTE** action. Add a small muted-gold square containing a right arrow. When hovered, the square should move approximately 3px to the right over `.3s`.
+
+The navigation should remain readable over both dark and light backgrounds. Adapt the background and text color based on the hero and scroll position if necessary. On mobile, hide the desktop centre menu and provide a functional mobile navigation menu.
+
+# 5. COMPLETE PINNED CINEMATIC SCROLL STORY
+
+The main animation must use one continuous pinned scroll experience, followed by a white monument collection panel. Preserve the original Mossline scroll architecture.
+
+Create a story wrapper with:
+
+```css
+#story {
+  position: relative;
+  height: 640vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #e5e5e0;
+}
+```
+
+The cinematic story should contain all scenes inside the same sticky stage. Do not implement each animation beat as a separate ordinary page section.
+
+Use independently layered absolute-positioned elements in the correct stacking order. The main stack should include the camera container, canvas video renderer, high-resolution hero still, atmospheric mist, cemetery fog, hero headline, transparent foreground monument cut-out, floating foreground elements, hero HUD, caption, scroll hint, vision statement, craftsmanship paragraph, interactive hotspots, company promise heading, glass information card, feature list, and bottom progress indicator.
+
+Use `position: absolute` and `inset: 0` for the main layers, with `pointer-events: none` on non-interactive layers and `pointer-events: auto` on their interactive children.
+
+The entire pinned story must feel like one continuous cinematic camera journey.
+
+# 6. BEAT ONE — CINEMATIC HERO: A LASTING TRIBUTE
+
+Create a beautiful cemetery landscape with natural greenery, mature trees, realistic memorials, subtle atmospheric mist, soft daylight, and a featured granite monument. The composition should have a premium photographic appearance and natural depth of field.
+
+The hero headline must read:
+
+**"A Lasting Tribute. A Timeless Memory."**
+
+Place the headline prominently in the centre of the scene using elegant oversized serif typography. Above it, add a small chip reading **"A LEGACY OF REMEMBRANCE"** or **"C & M MONUMENT COMPANY"**.
+
+Use the same masked text-rise choreography as Mossline. The headline should begin approximately 105% below its masked wrapper and rise into position over approximately 1.1 seconds using `cubic-bezier(.2,.8,.2,1)`. Use a line-height around `.92`, letter spacing around `-.045em`, and responsive font sizing.
+
+The monument should be a visually dominant element in the hero. Use a transparent foreground cut-out where possible so the monument can overlap the lower portion of the headline and create realistic depth without making the text unreadable.
+
+The featured monument should have realistic granite texture, polished edges, natural shadows, elegant proportions, and a detailed engraved memorial area. Give it subtle idle floating movement and pointer-based parallax. It must look like a real monument presented through an artistic cinematic composition, not a cartoon or fantasy object.
+
+# 7. INTERACTIVE FLOATING MONUMENT — CLICK TO REVEAL A MEMORIAL
+
+This is one of the most important features of the website. The floating monument must be a real interactive element, not just a decorative image.
+
+When a visitor clicks or taps the floating monument, begin an immersive memorial reveal sequence. The monument should respond with a subtle 3D movement, the camera should push forward, and the monument presentation should gently open, unfold, or transform. A beautifully presented memorial monument should emerge into the central hero composition.
+
+Use realistic 3D perspective, layered transforms, shadows, polished granite textures, natural lighting, and carefully timed opacity and scale transitions. As the camera moves closer, reveal the monument's surface details, engraved lettering, stone finish, edges, and craftsmanship. Add only subtle atmospheric particles or dust if they genuinely improve the scene.
+
+Reveal the heading:
+
+**"Every Life Deserves a Beautiful Tribute."**
+
+Show this supporting message:
+
+"A lasting memorial is more than stone. It is a beautiful way to honor a life, preserve memories, and celebrate a loved one."
+
+Include a refined call to action:
+
+**EXPLORE OUR MONUMENTS →**
+
+Clicking this action should smoothly navigate to the monument collection section.
+
+Provide a close or back control that reverses the animation and restores the original floating monument composition without any sudden jump.
+
+Implement the interaction using React state with clearly defined states such as `idle`, `opening`, `revealed`, and `closing`. Prevent repeated clicks during active transitions. Keep the interaction keyboard accessible and touch friendly. It must not interfere with the pinned scroll animation. Coordinate the reveal state and scroll state so that the two animation systems do not conflict.
+
+Do not implement this as an ordinary popup, modal, or separate page. It must feel like an immersive discovery that happens within the hero scene itself.
+
+# 8. BEAT TWO — CINEMATIC MONUMENT FLY-IN
+
+After the hero, scrolling should drive a cinematic camera fly-in toward a featured monument.
+
+The camera should start with a wide cemetery landscape, push forward through the environment, glide past nearby memorials and trees, descend slightly toward a featured granite monument, move closer to reveal the polished stone surface and engraved details, and finally settle at eye level facing the memorial.
+
+Use a smooth and natural camera path. The movement should feel like a professional cinematic drone or dolly shot rather than a fast video transition.
+
+Two small foreground elements, such as drifting leaves or subtle atmospheric details, should pass the camera to create depth. Their movement should use the same fly-past logic as the original Mossline foreground sprites.
+
+During the fly-in, reveal the vision statement:
+
+**"Creating Beautiful Memorials. Preserving Precious Memories."**
+
+The text should begin blurred and progressively resolve into focus as the camera settles. Use the same word-by-word reveal and fade-out choreography as the reference.
+
+# 9. VIDEO FRAME CACHING AND CANVAS SCRUBBING
+
+The fly-in video must be a real video asset, not a static image with an opacity animation.
+
+Use a monument-specific cinematic video with approximately 5.04 seconds duration, 24 FPS, 121 frames, and a 1912 × 1080 resolution, without audio. The exact asset mapping and original reference specifications are detailed in Section 17.
+
+Use a hidden video element with `muted`, `playsInline`, `preload="auto"`, and `crossOrigin="anonymous"`.
+
+Recreate the Mossline video-frame caching architecture. Do not continuously seek the video during scrolling.
+
+Use:
+
+```js
+const FPS = 24;
+const NF = Math.max(2, Math.round(duration * FPS));
+```
+
+Maintain an array for cached frames and use an offscreen canvas of 1600 × 900 for frame capture. Capture frame 0 first and store it as a JPEG blob using quality `.9`. This first frame is essential because it is used for the initial still-to-video handoff.
+
+Where supported, use `requestVideoFrameCallback`. For each callback, calculate the frame index using `Math.min(NF - 1, Math.round(mediaTime * FPS))`. Capture any uncached frame as a JPEG blob using quality `.86`. If the captured frame is the currently requested frame, update the canvas renderer. Continue registering callbacks until the video ends, and start video playback for the purpose of filling the cache.
+
+If `requestVideoFrameCallback` is unavailable, use sequential seeking through the video. Set `currentTime` to `Math.min(i / FPS, duration - .01)`, wait for the `seeked` event, and capture the frame.
+
+The visible canvas backing store should use its client dimensions multiplied by `Math.min(devicePixelRatio, 1.5)`. Resize it when the viewport changes. Preserve the correct aspect ratio and never stretch the video.
+
+Create a frame-rendering function such as `drawWant`. It should avoid overlapping work by using a busy flag, search outward for the nearest available cached frame when the requested frame is not yet cached, decode the selected blob using `createImageBitmap`, and draw it using cover-fit scaling:
+
+```js
+const scale = Math.max(
+  canvasWidth / bitmapWidth,
+  canvasHeight / bitmapHeight
+);
+```
+
+Centre the image in the canvas, update the currently displayed frame index, close the bitmap when finished, and render the newest requested frame if the requested index changes during decoding.
+
+Optionally expose a test helper such as `window.__hero` with `ready()` and `settled()` functions for checking cache readiness and renderer state, but keep production code clean if this is unnecessary.
+
+The high-resolution hero still and the opening video frame must match in composition, lighting, camera angle, and monument placement. Begin with the still image visible, then dissolve it into video frame 0. Only after this handoff should the scroll begin scrubbing through the video frames. Prevent flashes, black frames, mismatched compositions, or visible jumps.
+
+If a real fly-in video is unavailable, implement a graceful fallback using consistent high-resolution images and scroll-driven camera transforms. Do not leave broken URLs or a non-functional video renderer.
+
+# 10. FLOATING FOREGROUND ELEMENTS AND PARALLAX
+
+Replace Mossline's floating rocks with suitable monument-environment foreground elements, such as natural leaves, delicate branches, or subtle atmospheric details.
+
+If a sprite sheet is supplied, preserve the original cropping architecture using a transparent sprite sheet treated as a 1200 × 678 coordinate frame. Use absolute positioning, overflow-hidden containers, and inner bob elements. If a sprite sheet is unavailable, use individual transparent PNG or WebP elements.
+
+Use subtle bobbing motion similar to:
+
+```css
+@keyframes bob {
+  from {
+    transform: translateY(-1.2%) rotate(-1.2deg);
+  }
+
+  to {
+    transform: translateY(1.6%) rotate(1.4deg);
+  }
+}
+```
+
+Use different animation durations and negative delays so the elements do not move together. Preserve the original fly-past behavior: calculate normalized progress, move elements across the camera, scale them gradually, apply a subtle blur as they approach, and hide them after they pass.
+
+Use pointer movement for subtle camera parallax. The foreground elements should move at a slightly different rate from the background to create depth.
+
+Keep the visual treatment restrained and realistic.
+
+# 11. HERO HUD, CAPTION, AND SCROLL INDICATOR
+
+Replace Mossline's environmental coordinates and biodiversity labels with monument-related information.
+
+Position a small HUD near the featured monument. Include a refined uppercase label **"MONUMENT CRAFTSMANSHIP"** and three short supporting lines: **"PREMIUM GRANITE"**, **"PERSONALIZED ENGRAVING"**, and **"QUALITY FINISHING"**.
+
+Use small monospace typography, muted gold accents, thin corner brackets, and subtle shadows. Do not show fabricated coordinates, elevations, locations, or technical measurements.
+
+At the bottom left, display:
+
+"Honoring a lifetime of memories.  
+Crafted with care and attention.  
+Designed to preserve what matters."
+
+Use a small accent border on the left, approximately 34px distance from the left and bottom edges, and small uppercase or compact supporting typography.
+
+At the bottom right, display **"SCROLL TO EXPLORE"** with a 20px circular arrow indicator. Use a subtle downward arrow animation that nudges approximately 2px every 1.6 seconds.
+
+Fade out the caption and scroll indicator near the beginning of the cinematic scroll transition.
+
+# 12. ATMOSPHERIC CEMETERY FOG AND MIST
+
+Replace Mossline's fog with natural cemetery morning mist.
+
+Create layered fog using CSS radial gradients and SVG fractal noise. The base fog should use soft neutral grey-white tones. Add two additional noise layers with different SVG `feTurbulence` frequencies and octaves.
+
+Preserve the reference's layered structure and timing:
+
+- Base fog: a radial gradient with soft grey-white tones and approximately 10px blur.
+- First noise layer: SVG fractal noise using `baseFrequency=".006 .014"`, 3 octaves, seed 4, opacity around `.55`, and approximately 14px blur. Animate using a 26-second alternate movement.
+- Second noise layer: SVG fractal noise using `baseFrequency=".004 .009"`, 4 octaves, seed 11, opacity around `.9`, and approximately 8px blur. Animate using a 19-second alternate movement.
+
+Use a radial mask similar to:
+
+```css
+radial-gradient(
+  ellipse 52% 48% at 46% 46%,
+  #000 44%,
+  rgba(0,0,0,.7) 64%,
+  transparent 100%
+);
+```
+
+The fog should move gently and naturally, entering from the left during the transition toward the craftsmanship landscape. Preserve the original scroll-controlled opacity and movement behavior. Never let the fog obscure the monument or make the cemetery look smoky or excessively dramatic.
+
+# 13. BEAT THREE — MONUMENT CRAFTSMANSHIP LANDSCAPE
+
+Transition into a detailed monument landscape with the company mission revealed word by word as the visitor scrolls.
+
+Use the following exact company statement:
+
+"C & M Monument Company was born from the belief that we could help loved ones in time of loss by providing quality markers of remembrance at an affordable cost. Our goal is to offer monuments that beautifully celebrate the life of the one who has passed on. We care about the little things that remind us of our loved ones and the life they lived."
+
+Position the paragraph toward the upper-left area, approximately 34px from the left and 14vh from the top, with a maximum width around 560px or 86vw. Use responsive typography around `clamp(20px, 1.9vw, 29px)`, line-height around `1.16`, and letter spacing around `-.02em`.
+
+Split the paragraph into individual word spans. Each word should progressively appear through opacity, small vertical movement, and blur reduction. Use the same scroll-controlled reveal architecture as Mossline.
+
+### Four interactive craftsmanship hotspots
+
+Position four hotspots around the featured monument:
+
+**Hotspot 1 — Premium Granite:** Explain the importance of quality stone materials and natural finishes.
+
+**Hotspot 2 — Detailed Engraving:** Explain personalized lettering and meaningful memorial details.
+
+**Hotspot 3 — Custom Memorial Designs:** Highlight different monument forms and personalized designs.
+
+**Hotspot 4 — Quality Craftsmanship:** Highlight attention to finishing, proportions, and the details that make a memorial meaningful.
+
+Each hotspot should use a small approximately 22px muted-gold marker, subtle pulse animation, compact glass-style information label, and expandable supporting description. Use small monospace uppercase text around 10.5px, letter spacing around `.14em`, and approximately 6px vertical and 9px horizontal padding.
+
+The information panel should initially remain collapsed, with its supporting description expanding smoothly to a maximum height of approximately 80px. Use a `.45s` transition. Clicking a hotspot should expand it, and only one hotspot should remain open at a time. On hover, the marker should scale to approximately 1.15.
+
+Do not invent material specifications, technical certifications, or manufacturing claims that have not been verified.
+
+# 14. BEAT FOUR — OUR PROMISE: MADE WITH CARE
+
+Create a refined company promise scene with the heading:
+
+**"Made with Care. Created to Last."**
+
+Position the heading toward the upper-left area, approximately 34px from the left and 13vh from the top. Use responsive typography around `clamp(22px, 2vw, 30px)`, line-height around `1.08`, and letter spacing around `-.025em`.
+
+Above the heading, show a small muted-gold uppercase label:
+
+**"C & M / OUR PROMISE"**
+
+Create a premium glass-style information card with a translucent warm-grey background, subtle white border, 10px radius, approximately 18px padding, and `backdrop-filter: blur(16px) saturate(1.2)`. Give it a natural 3D entrance animation.
+
+The card should be approximately 250px wide and positioned around 38% from the left and 38vh from the top on desktop.
+
+Its content should include the heading **"Thoughtful Memorial Craftsmanship"**, a small note **"A tribute shaped around a life"**, and a highlighted phrase **"Personalized Details"**. Add a decorative SVG line drawing inspired by an engraved monument outline or refined craftsmanship detail. Do not display fabricated counts, business statistics, or fake performance charts. Use a count-up animation only if verified company figures are supplied.
+
+On the right, create a glass-style feature list approximately 400px wide or 36vw, positioned around 34px from the right and 30vh from the top. Use five rows:
+
+01 — Meaningful Remembrance  
+02 — Quality Craftsmanship  
+03 — Custom Monument Designs  
+04 — Affordable Memorial Options  
+05 — Personal Attention to Detail
+
+Each row should use a grid layout of `30px 1fr 16px`, approximately 8px gap, 11px vertical padding, and subtle divider lines. Use small uppercase monospace labels around 11px.
+
+On hover or click, change the text to muted gold, increase left padding by approximately 6px, and move the arrow 4px to the right over `.3s`.
+
+Animate the heading, card, decorative SVG drawing, and feature rows using the same staggered scroll timing as the original reference. The card should enter with opacity, translation, and a subtle `rotateY` and `rotateX` effect controlled by pointer movement.
+
+# 15. BEAT FIVE — MONUMENT COLLECTION PANEL
+
+At the end of the pinned cinematic story, create a large white rounded panel that slides upward over the bottom of the stage, using the original Mossline Solutions section choreography.
+
+Use:
+
+```css
+#monuments {
+  position: relative;
+  z-index: 5;
+  margin-top: -30vh;
+  background: #fff;
+  border-radius: 22px 22px 0 0;
+  padding: 70px 34px 90px;
+  box-shadow: 0 -30px 60px rgba(35, 35, 25, .12);
+}
+```
+
+The panel should feel like the final reveal of the cinematic story, not a disconnected section.
+
+At the top, display a small chip reading **"OUR MONUMENTS"** and the main heading:
+
+**"A Beautiful Tribute for Every Memory."**
+
+Supporting paragraph:
+
+"Discover meaningful memorial designs created to honor loved ones and preserve their memories for generations."
+
+Create three premium monument cards in a three-column desktop layout with approximately 14px gaps. Cards should be approximately 440px tall, with 12px rounded corners, overflow hidden, full-bleed photography, and a refined dark gradient overlay.
+
+The first card should be **Upright Monuments**, with a realistic upright memorial photograph and the description "Traditional and custom upright memorial designs."
+
+The second card should be **Companion Monuments**, with a realistic companion memorial photograph and the description "Memorial designs created to commemorate two loved ones."
+
+The third card should be **Flat & Slant Markers**, with a realistic flat or slant marker photograph and the description "Elegant, space-conscious memorial options."
+
+Each card should include a small uppercase category label at the top, a muted-gold circular arrow, a large elegant heading at the bottom, and a supporting description that expands on hover.
+
+On hover, zoom the background image to approximately `scale(1.07)` over `1.2s` using `cubic-bezier(.2,.8,.2,1)`. Rotate the circular arrow approximately -45 degrees, reveal the description, and apply a subtle 3D tilt based on pointer position.
+
+Use `perspective(1000px)`, `rotateY(x * 6deg)`, and `rotateX(-y * 6deg)`. Smoothly reset the tilt on pointer leave.
+
+Below the cards, create four non-numeric service highlights: **Thoughtful Design**, **Quality Materials**, **Personalization**, and **Lasting Remembrance**. Each should have a large refined heading and a small uppercase supporting description.
+
+Do not copy the Mossline environmental statistics or fabricate C & M business figures. Only use real verified company statistics if supplied later.
+
+# 16. EXACT SCROLL CONTROLLER, ANIMATION TIMINGS, AND TRANSITIONS
+
+Use a single requestAnimationFrame loop to drive the main cinematic scroll experience. Avoid creating separate competing scroll loops for individual scenes. Use reusable helper functions and update DOM styles through refs or controlled animation utilities rather than causing React re-renders on every frame.
+
+Implement:
+
+```js
+const clamp = (v, min = 0, max = 1) =>
+  Math.min(max, Math.max(min, v));
+
+const seg = (p, a, b) =>
+  clamp((p - a) / (b - a));
+
+const ease = (t) =>
+  t < 0.5
+    ? 4 * t * t * t
+    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+```
+
+Calculate raw progress:
+
+```js
+const p = clamp(
+  -storyRect.top /
+  (story.offsetHeight - window.innerHeight)
+);
+```
+
+Smooth progress using:
+
+```js
+sp += (p - sp) * (1 - Math.pow(0.86, dt / 16.7));
+```
+
+Cap `dt` at 64ms and snap to the raw progress when the difference becomes smaller than `.0002`.
+
+Normalize pointer position relative to the viewport using `mx = pointerX / viewportWidth - .5` and `my = pointerY / viewportHeight - .5`. Smooth the pointer values toward their target by approximately 6% per frame. Use these values for camera parallax, foreground elements, monument depth, and glass card movement.
+
+Use the following original scroll ranges as the animation choreography.
+
+**Video progress:** Calculate `vp = ease(seg(sp, .05, .70))` and `want = round(vp * (NF - 1))`. Pass the requested frame to the cached frame renderer.
+
+**Camera:** Apply movement to both the main camera and foreground cut-out. Use translation based on `-sx * 18px` horizontally and `-sy * 12px + (1 - vp) * innerHeight * .06` vertically. Apply a subtle scale of `1 + .02 * (1 - vp)`.
+
+**Still-to-video handoff:** Use the original handoff range around `.06–.105`. Begin with the hero still and foreground cut-out visible. Dissolve them into the matching video frame 0. Hide the still when the handoff completes. Do not begin substantial video scrubbing before the handoff has finished. Keep the transition visually seamless.
+
+**Hero exit:** Use `h = seg(sp, .02, .10)`. Move the headline upward by `h * 80px`, apply scale `1 + h * .12`, blur by `h * 14px`, and fade opacity from 1 to 0. Apply pointer-based movement to the HUD and move it upward during the hero exit. Fade the HUD around the original `.02–.08` range. Fade the caption and scroll hint around `.01–.05`.
+
+**Vision statement:** Use `vIn = seg(sp, .16, .27)` and `vOut = seg(sp, .34, .42)`. Animate each word independently using `k = clamp(vIn * 1.6 - i * .08)`. Apply vertical translation of `(1-k) * 30 - vOut * 60`, blur of `(1-k) * 12 + vOut * 14`, and opacity `k * (1-vOut)`. Fade and move the chip and paragraph using the same original timing.
+
+**Craftsmanship paragraph and hotspots:** Use `aIn = seg(sp, .45, .55)` and `aOut = seg(sp, .63, .68)`. Animate each word with `k = clamp(aIn * 2.2 - i / count * 1.2)`. Use opacity `(.15 + .85 * k) * (1-aOut)` and blur `(1-k) * 6 + aOut * 10`. Animate each hotspot using `seg(sp, .49 + i * .02, .53 + i * .02)`, with pointer parallax, translation, and scale.
+
+**Company promise:** Use `sIn = seg(sp, .72, .82)` for the heading and `cIn = ease(seg(sp, .74, .86))` for the information card. Fade and lift the heading into position. Animate the glass card using opacity, translation, and subtle pointer-controlled `rotateY` and `rotateX`. Reveal the five feature rows with:
+
+```js
+const k = ease(
+  seg(sp, .76 + i * .025, .82 + i * .025)
+);
+```
+
+Use opacity `k` and horizontal movement `(1-k) * 40px`.
+
+**Progress indicator:** Display a 120px × 2px bar at the bottom centre. Animate its inner element using `transform: scaleX(sp)` with `transform-origin: left`. Use muted gold rather than Mossline lime.
+
+Hide or disable inactive layers when their computed opacity and visibility are zero. Prevent unnecessary rendering work and ensure all scene transitions remain smooth in both directions.
+
+# 17. EXACT CINEMATIC ASSET REQUIREMENTS AND REPLACEMENT MAPPING
+
+The original Mossline reference uses six specific visual assets to achieve its cinematic animation. These assets define the visual roles, layering, camera movement, frame transitions, and composition. Preserve these roles and recreate each one using monument-specific visuals for C & M Monument Company.
+
+**IMPORTANT: The following six URLs are original Mossline reference assets. They are provided only to identify the original asset type, technical specifications, and purpose. Do not use these URLs as actual imagery or video on the C & M Monument Company website. Do not display Mossline environmental visuals anywhere in the final website.**
+
+### Asset 1 — Original cinematic fly-in video
+
+Original reference specifications: The video was generated using Kling 4.0, has a duration of 5.04 seconds, 24 FPS, 121 frames, a resolution of 1912 × 1080, and no audio.
+
+Original reference URL:
+
+`https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261106_025717_906b686d-9a9a-4dea-bab4-ae2454f8390e.mp4`
+
+Original content: The camera starts on a floating moss island in a misty sky, pushes forward and descends over its mossy top through fog, then reaches eye level in a moss-and-fern landscape facing a slim grey sensor mast with white louvered sensor housings and a small solar panel. Distant floating rocks hang in the haze behind it.
+
+**C & M replacement requirement:** Create a monument-specific cinematic fly-in video with the same technical specifications: approximately 5.04 seconds, 24 FPS, 121 frames, 1912 × 1080, and no audio. The camera should begin with a wide, peaceful cemetery landscape, push forward toward a featured granite monument, descend slightly while passing trees and nearby memorials, glide through subtle natural morning mist, approach the monument, reveal its polished granite surface and engraved details, and finally settle at eye level facing the featured memorial. The final frame must be a stable, visually beautiful monument composition. Generate this as a coherent cinematic video using a suitable video-generation workflow or use actual C & M footage if available. The video must be suitable for frame-by-frame scroll scrubbing.
+
+### Asset 2 — Original high-resolution hero still
+
+Original reference specifications: A GPT Image 2.5 recreation of video frame 0, with a resolution of 2688 × 1520.
+
+Original reference URL:
+
+`https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_031618_8ce6dca1-972d-429d-8d13-bf0691c37848.png&w=2400&q=88`
+
+**C & M replacement requirement:** Create a high-resolution hero still matching frame 0 of the monument fly-in video. It must have the same monument position, camera angle, lighting, environment, composition, perspective, and background arrangement. The still will be visible before the video starts and must dissolve seamlessly into video frame 0. Do not use an unrelated monument photograph for the hero still.
+
+### Asset 3 — Original transparent hero cut-out
+
+Original reference specifications: A transparent cut-out containing the large floating island and two small side rocks.
+
+Original reference URL:
+
+`https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_031657_baaa3380-5ece-482a-a623-a1838fd7653c.png&w=2400&q=90`
+
+**C & M replacement requirement:** Create a transparent PNG or WebP cut-out of the featured granite monument, including any appropriate decorative monument details. It must have a genuinely transparent background, not a simulated checkerboard or solid-color background. Use it as a separate foreground layer above the hero still and cinematic video. It is essential for the monument's depth, parallax, headline overlap, and floating presentation. The transparent cut-out must match the hero still and video composition.
+
+### Asset 4 — Original floating foreground sprite sheet
+
+Original reference specifications: A transparent sprite sheet containing three mossy rocks arranged in a row, treated as a 1200 × 678 coordinate frame.
+
+Original reference URL:
+
+`https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_025635_82593f6a-1cf7-41c1-94ac-96fb89ebfd1a.png&w=2400&q=85`
+
+**C & M replacement requirement:** Create a transparent sprite sheet containing three suitable cemetery foreground elements, such as natural leaves, subtle branches, or delicate environmental details. Keep the three elements in one horizontal row on a transparent background and use a consistent 1200 × 678 coordinate frame. Preserve the original sprite-cropping architecture so each element can be positioned and animated independently. Apply the same bobbing, floating, pointer parallax, camera movement, scaling, blur, and fly-past behavior. Do not introduce fantasy-like floating stones or distracting particles.
+
+### Asset 5 — Original sensor-mast landscape still
+
+Original reference specifications: A sensor-mast landscape still used for two solution cards.
+
+Original reference URL:
+
+`https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_025630_9a37a1e0-2547-4973-8160-c75205993914.png&w=1400&q=82`
+
+**C & M replacement requirement:** Create or obtain high-quality monument landscape photography showing beautiful upright memorials in a landscaped cemetery, natural trees and greenery, realistic granite materials, soft natural lighting, and elegant photographic compositions. Use suitable monument landscape photographs for the relevant monument collection and service cards. Do not use sensor equipment or environmental monitoring visuals.
+
+### Asset 6 — Original floating island in clouds still
+
+Original reference specifications: A floating island in clouds still used for the middle solution card.
+
+Original reference URL:
+
+`https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261106_025545_b003e5cc-e68f-4fee-b686-c217a5d81eea.png&w=1400&q=82`
+
+**C & M replacement requirement:** Create a premium photograph of a companion monument in a peaceful memorial setting. The image should communicate companionship, remembrance, and a shared tribute. Use it for the Companion Monuments collection card. It must match the photographic style and lighting of the other collection images.
+
+### Asset consistency and implementation requirements
+
+All six monument replacement assets must belong to the same visual world. Maintain consistent granite appearance, material quality, lighting direction, camera perspective, cemetery environment, color grading, depth of field, and photographic realism. Avoid mixing unrelated stock photographs with visibly different lighting, color treatments, or camera styles.
+
+The hero still, transparent foreground cut-out, and opening video frame must match closely enough to create a seamless layered composition and video handoff.
+
+The fly-in video must be scrubbed through cached frames using the canvas rendering architecture described in Section 9. Never substitute the video with a static image and a basic opacity animation. If actual C & M photography is available, prioritize it. If the necessary assets are not supplied, generate coherent monument-specific assets or use suitable licensed imagery. Never leave broken URLs, empty image elements, missing layers, or black video frames. If a particular asset cannot be generated or obtained, implement a graceful fallback while preserving the website's functionality.
+
+# 18. RESPONSIVE DESIGN
+
+Use 820px as the main responsive breakpoint.
+
+At widths of 820px and below, reduce navigation padding to approximately `16px 18px`, hide the desktop centre menu, and provide a functional mobile menu. Keep the logo and contact action visible.
+
+Adapt the hero headline so it wraps naturally. Clear desktop inline positioning values where necessary and use responsive sizing such as `clamp(44px, 6vw, 96px)`. Scale the featured monument and foreground cut-out proportionally. Position the HUD around 50% horizontal and 66% vertical, and move the caption toward the bottom with approximately 18px side spacing. Move the scroll hint to approximately 18px from the right and 24px from the bottom.
+
+Reduce floating element sizes and adjust their positioning. Move the company promise heading to approximately 18px from the left and 11vh from the top. Position the glass card around 18px from the left and 6vh from the bottom with a width around 210px. Position the feature list around 18px from the right and 6vh from the bottom, with a width around 45vw. Reduce row typography and hide unnecessary arrows.
+
+For the monument collection, use approximately `50px 18px 70px` padding, stack the three cards into one column, and make each card approximately 340px tall. Display the four service highlights in a two-column grid.
+
+Do not simply shrink the desktop design. Adapt the camera composition, text placement, interaction targets, and visual hierarchy to mobile screens. Ensure the floating monument reveal remains functional on touch devices.
+
+# 19. PERFORMANCE, ACCESSIBILITY, AND ANIMATION QUALITY
+
+The website must remain smooth during scrolling, video scrubbing, pointer movement, and interactive monument transitions.
+
+Use a single requestAnimationFrame loop for the main cinematic story. Avoid unnecessary React state updates on every frame. Use refs for high-frequency animation values and update styles through a controlled animation layer. Use passive scroll and pointer listeners where appropriate. Clean up event listeners, video callbacks, animation frames, and other resources when components unmount.
+
+Cache video frames and avoid repeated live seeking. Reuse decoded image bitmaps where possible. Optimize images using WebP or AVIF where suitable. Preload only essential hero assets and lazy-load below-the-fold images. Prevent layout shifts and avoid loading unnecessary large assets.
+
+Do not introduce heavy 3D libraries unless they are genuinely required. Prefer CSS transforms, perspective, JavaScript, canvas, and the existing frame-rendering architecture. If a minimal library is necessary for the required animation quality, explain why and keep dependencies limited.
+
+Respect `prefers-reduced-motion`. Provide a less motion-intensive experience for visitors who request reduced motion. Make the floating monument, close/back control, hotspots, navigation, and cards keyboard accessible. Use semantic HTML, accessible button labels, visible focus states, and appropriate image alt text. Ensure text remains readable over imagery.
+
+# 20. REQUIRED REACT PROJECT STRUCTURE
+
+Use a maintainable React JSX project structure with reusable components and custom JavaScript hooks. A suitable structure is:
+
+```text
+src/
+  components/
+    Navbar.jsx
+    Hero.jsx
+    FloatingMonument.jsx
+    MemorialReveal.jsx
+    CinematicStory.jsx
+    MonumentHotspots.jsx
+    PromiseSection.jsx
+    MonumentCollection.jsx
+    MonumentCard.jsx
+    Footer.jsx
+
+  hooks/
+    useScrollProgress.js
+    usePointerParallax.js
+    useVideoFrameCache.js
+
+  styles/
+    global.css
+    navigation.css
+    hero.css
+    cinematic.css
+    monuments.css
+    responsive.css
+
+  App.jsx
+  main.jsx
+```
+
+Use React components for the major sections and reusable hooks for scroll progress, pointer parallax, and video frame caching. Keep animation logic maintainable and avoid putting the entire implementation into one enormous component.
+
+Use JavaScript and JSX only. Do not create `.tsx` files or TypeScript types.
+
+# 21. FINAL WEBSITE JOURNEY AND DELIVERY REQUIREMENTS
+
+The finished visitor experience should begin with a peaceful, cinematic cemetery hero displaying **"A Lasting Tribute. A Timeless Memory."** The visitor should notice the beautifully presented floating granite monument and be able to click it to trigger the immersive memorial reveal. The reveal should show **"Every Life Deserves a Beautiful Tribute."**, explain the company's purpose, and provide an Explore Our Monuments action.
+
+As the visitor scrolls, the hero should hand off seamlessly into the cached cinematic fly-in video. The camera should move through the cemetery toward a featured monument, showing realistic monument details and revealing the vision statement **"Creating Beautiful Memorials. Preserving Precious Memories."** The next stage should reveal the company's actual mission statement word by word, with four interactive hotspots for Premium Granite, Detailed Engraving, Custom Memorial Designs, and Quality Craftsmanship. The visitor should then discover the company's promise through the heading **"Made with Care. Created to Last."**, a refined glass information card, and five animated service features. Finally, the cinematic story should transition into the white monument collection panel featuring Upright Monuments, Companion Monuments, and Flat & Slant Markers, followed by the four non-numeric service highlights and the remaining website navigation and contact options.
+
+Build the complete working website, including all sections, transitions, interactions, animations, responsive behavior, and asset integration. Do not stop after creating the hero or a static homepage. Do not omit the floating monument click interaction, video frame caching, canvas scrubbing, pinned scroll choreography, or the six asset replacement requirements.
+
+**FINAL QUALITY REQUIREMENT:** The website must closely recreate the cinematic quality and technical animation behavior of the Mossline reference while feeling completely native to C & M Monument Company. Every animation should have a clear purpose, every image should fit the memorial brand, and every transition should feel smooth, intentional, realistic, and premium. Deliver a functional React JSX implementation, not just a design concept or screenshot.

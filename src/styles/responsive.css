@@ -1,0 +1,193 @@
+@media (max-width: 1040px) {
+  .monuments-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-showcase-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .services-split,
+  .consultation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .site-nav {
+    padding: 16px 18px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-mobile-toggle {
+    display: inline-flex;
+  }
+
+  .nav-brand-text {
+    font-size: 17px;
+  }
+
+  .nav-cta-label {
+    display: none;
+  }
+
+  .hero-headline-layer {
+    padding-top: 13vh;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-title {
+    font-size: clamp(40px, 10vw, 62px);
+  }
+
+  .hero-cutout-layer {
+    padding-bottom: 13vh;
+  }
+
+  .floating-monument-trigger {
+    width: min(56vw, 250px);
+    max-height: 44vh;
+  }
+
+  .floating-monument-img {
+    max-height: 40vh;
+  }
+
+  .floating-monument-cue {
+    bottom: 8px;
+    font-size: 9.5px;
+    padding: 6px 10px;
+  }
+
+  .hero-hud {
+    left: 50%;
+    top: 66%;
+    transform: translate(-50%, -50%);
+    min-width: 210px;
+    padding: 10px 12px;
+  }
+
+  .hero-caption {
+    left: 18px;
+    right: 18px;
+    bottom: 54px;
+    font-size: 10px;
+  }
+
+  .scroll-hint {
+    right: 18px;
+    bottom: 24px;
+    font-size: 10px;
+  }
+
+  .memorial-reveal-overlay {
+    padding: 78px 18px 28px;
+    overflow-y: auto;
+    align-items: flex-start;
+  }
+
+  .memorial-reveal-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .memorial-reveal-stage {
+    min-height: 240px;
+  }
+
+  .memorial-reveal-img {
+    max-height: 32vh;
+  }
+
+  .mission-block {
+    left: 18px;
+    right: 18px;
+    top: 12vh;
+    max-width: none;
+    padding: 16px;
+  }
+
+  .promise-heading-wrap {
+    left: 18px;
+    right: 18px;
+    top: 11vh;
+    max-width: none;
+    padding: 14px 16px;
+  }
+
+  .promise-card-wrap {
+    left: 18px;
+    top: auto;
+    bottom: 6vh;
+    width: min(210px, 44vw);
+  }
+
+  .promise-glass-card {
+    padding: 14px;
+  }
+
+  .promise-card-svg {
+    height: 42px;
+  }
+
+  .promise-card-title {
+    font-size: 17px;
+  }
+
+  .promise-features-wrap {
+    right: 18px;
+    top: auto;
+    bottom: 6vh;
+    width: 45vw;
+    padding: 6px 12px;
+  }
+
+  .promise-feature-row {
+    grid-template-columns: 24px 1fr;
+    font-size: 9.5px;
+    padding: 8px 0;
+  }
+
+  .promise-feature-arrow {
+    display: none;
+  }
+
+  #monuments {
+    padding: 50px 18px 70px;
+  }
+
+  .monuments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monument-card {
+    height: 340px;
+  }
+
+  .monument-detail-panel {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .highlights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+
+  .gallery-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .consult-form {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    padding: 60px 18px 36px;
+  }
+}

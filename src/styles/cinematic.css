@@ -1,0 +1,457 @@
+#story {
+  position: relative;
+  height: 640vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #e5e5e0;
+}
+
+.camera {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.video-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hidden-video {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Foreground Botanical Sprites (1200x678 coordinate frame) */
+.sprites-layer {
+  z-index: 7;
+  overflow: hidden;
+}
+
+.sprite-slot {
+  position: absolute;
+  overflow: hidden;
+  will-change: transform, opacity, filter;
+}
+
+.sprite-bob {
+  width: 100%;
+  height: 100%;
+  animation: bob 5s ease-in-out infinite alternate;
+}
+
+.sprite-sheet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Atmospheric Cemetery Mist */
+.fog-layer {
+  z-index: 9;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(
+    ellipse 52% 48% at 46% 46%,
+    #000 44%,
+    rgba(0, 0, 0, 0.7) 64%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 52% 48% at 46% 46%,
+    #000 44%,
+    rgba(0, 0, 0, 0.7) 64%,
+    transparent 100%
+  );
+}
+
+.fog-base {
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(
+    ellipse 64% 52% at 45% 48%,
+    rgba(241, 242, 238, 0.68) 0%,
+    rgba(232, 233, 229, 0.42) 45%,
+    transparent 76%
+  );
+  filter: blur(10px);
+}
+
+.fog-noise-a {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.55;
+  filter: blur(14px);
+  animation: fogDriftA 26s ease-in-out infinite alternate;
+}
+
+.fog-noise-b {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.9;
+  filter: blur(8px);
+  animation: fogDriftB 19s ease-in-out infinite alternate;
+}
+
+/* Beat 2 — Vision Statement */
+.vision-layer {
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 34px;
+  text-align: center;
+}
+
+.vision-inner {
+  max-width: 960px;
+}
+
+.vision-chip-wrap {
+  margin-bottom: 18px;
+}
+
+.vision-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(34px, 4.4vw, 66px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #f7f6f2;
+  text-shadow: 0 12px 36px rgba(14, 16, 14, 0.52);
+  text-wrap: balance;
+}
+
+.vision-word {
+  display: inline-block;
+  margin-right: 0.24em;
+  will-change: transform, opacity, filter;
+}
+
+.vision-sub {
+  margin: 20px auto 0;
+  max-width: 46ch;
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.6;
+  color: rgba(247, 246, 242, 0.88);
+  text-shadow: 0 4px 18px rgba(14, 16, 14, 0.55);
+}
+
+/* Beat 3 — Craftsmanship Mission Paragraph + Hotspots */
+.mission-layer {
+  z-index: 14;
+}
+
+.mission-block {
+  position: absolute;
+  left: 34px;
+  top: 14vh;
+  max-width: min(560px, 86vw);
+  padding: 20px 22px;
+  border-radius: 6px;
+  background: rgba(24, 26, 24, 0.42);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.mission-kicker {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  margin-bottom: 12px;
+}
+
+.mission-copy {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(20px, 1.9vw, 29px);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  color: #f7f6f2;
+}
+
+.mission-word {
+  display: inline-block;
+  margin-right: 0.23em;
+  will-change: opacity, filter;
+}
+
+/* Interactive Hotspots */
+.hotspot-item {
+  position: absolute;
+  z-index: 15;
+  will-change: transform, opacity;
+}
+
+.hotspot-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  background: transparent;
+}
+
+.hotspot-dot-wrap {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotspot-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--gold2);
+  animation: hotspotPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.hotspot-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(182, 154, 103, 0.92);
+  border: 1.5px solid #f7f6f2;
+  color: #1c1e1c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(12, 14, 12, 0.35);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease;
+}
+
+.hotspot-btn:hover .hotspot-marker,
+.hotspot-btn[aria-expanded="true"] .hotspot-marker {
+  transform: scale(1.15);
+  background: var(--gold2);
+}
+
+.hotspot-glass {
+  background: rgba(24, 26, 24, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(12px) saturate(1.15);
+  border-radius: 4px;
+  padding: 6px 9px;
+  color: #f7f6f2;
+  max-width: 250px;
+  box-shadow: 0 10px 26px rgba(10, 12, 10, 0.3);
+}
+
+.hotspot-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: block;
+}
+
+.hotspot-desc-wrap {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.35s ease,
+    margin-top 0.35s ease;
+}
+
+.hotspot-desc-wrap--open {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 6px;
+}
+
+.hotspot-desc {
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(247, 246, 242, 0.88);
+}
+
+/* Beat 4 — Promise Section (Made with Care. Created to Last.) */
+.promise-layer {
+  z-index: 16;
+}
+
+.promise-heading-wrap {
+  position: absolute;
+  left: 34px;
+  top: 13vh;
+  max-width: 440px;
+  padding: 16px 20px;
+  border-radius: 6px;
+  background: rgba(24, 26, 24, 0.36);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.promise-kicker {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  margin-bottom: 10px;
+}
+
+.promise-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #f7f6f2;
+  text-wrap: balance;
+}
+
+.promise-card-wrap {
+  position: absolute;
+  left: 38%;
+  top: 38vh;
+  width: 250px;
+  perspective: 900px;
+}
+
+.promise-glass-card {
+  width: 100%;
+  padding: 18px;
+  border-radius: 10px;
+  background: rgba(41, 44, 41, 0.56);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(16px) saturate(1.2);
+  color: #f7f6f2;
+  box-shadow: 0 22px 44px rgba(12, 14, 12, 0.36);
+  transform-style: preserve-3d;
+}
+
+.promise-card-svg {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 12px;
+}
+
+.promise-card-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.promise-card-note {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(247, 246, 242, 0.8);
+  margin-bottom: 12px;
+}
+
+.promise-card-highlight {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.promise-features-wrap {
+  position: absolute;
+  right: 34px;
+  top: 30vh;
+  width: min(400px, 36vw);
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: rgba(24, 26, 24, 0.54);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(16px) saturate(1.2);
+  color: #f7f6f2;
+  box-shadow: 0 22px 44px rgba(12, 14, 12, 0.32);
+}
+
+.promise-feature-row {
+  display: grid;
+  grid-template-columns: 30px 1fr 16px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 246, 242, 0.92);
+  transition: color 0.3s ease, padding-left 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.promise-feature-row:last-child {
+  border-bottom: 0;
+}
+
+.promise-feature-num {
+  color: var(--gold2);
+  font-variant-numeric: tabular-nums;
+}
+
+.promise-feature-arrow {
+  justify-self: end;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.promise-feature-row:hover,
+.promise-feature-row--active {
+  color: var(--gold2);
+  padding-left: 6px;
+}
+
+.promise-feature-row:hover .promise-feature-arrow,
+.promise-feature-row--active .promise-feature-arrow {
+  transform: translateX(4px);
+}
+
+/* Bottom Progress Bar */
+.story-progress-track {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: rgba(247, 246, 242, 0.24);
+  z-index: 20;
+  overflow: hidden;
+  border-radius: 99px;
+}
+
+.story-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--gold2);
+  transform-origin: left;
+  transform: scaleX(0);
+}

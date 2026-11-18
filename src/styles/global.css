@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #292c29;
+  --ink2: #565d55;
+  --mist: #e8e9e5;
+  --paper: #f7f6f2;
+  --stone: #c8c4ba;
+  --gold: #b69a67;
+  --gold2: #d2bc91;
+  --glass: rgba(247, 246, 242, 0.18);
+  --line: rgba(255, 255, 255, 0.30);
+
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--mist);
+}
+
+html,
+body {
+  background: var(--mist);
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 9px;
+  border-radius: 3px;
+  background: rgba(182, 154, 103, 0.18);
+  border: 1px solid rgba(182, 154, 103, 0.38);
+  color: #f7f6f2;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.chip--light {
+  background: rgba(182, 154, 103, 0.14);
+  border-color: rgba(182, 154, 103, 0.36);
+  color: #6f5932;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.interactive {
+  pointer-events: auto;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes bob {
+  from {
+    transform: translateY(-1.2%) rotate(-1.2deg);
+  }
+  to {
+    transform: translateY(1.6%) rotate(1.4deg);
+  }
+}
+
+@keyframes scrollNudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes fogDriftA {
+  0% {
+    transform: translate3d(-4%, -1.5%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(4%, 1.5%, 0) scale(1.1);
+  }
+}
+
+@keyframes fogDriftB {
+  0% {
+    transform: translate3d(3.5%, 1%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-3.5%, -1.5%, 0) scale(1.03);
+  }
+}
+
+@keyframes hotspotPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  70% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .bob,
+  .scroll-arrow-svg,
+  .fog-noise-a,
+  .fog-noise-b,
+  .hotspot-pulse {
+    animation: none !important;
+  }
+}
